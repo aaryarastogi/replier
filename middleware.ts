@@ -5,7 +5,7 @@ export default auth((req) => {
   const isDashboard = req.nextUrl.pathname.startsWith("/dashboard");
 
   if (!isLoggedIn && isDashboard) {
-    const loginUrl = new URL("/api/auth/signin", req.nextUrl.origin);
+    const loginUrl = new URL("/api/auth/callback/google", req.nextUrl.origin);
     loginUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
 
     return Response.redirect(loginUrl);
